@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const http = require('http');
 require('dotenv').config()
 const cors = require('cors');
-
+const upload = require('./config/multer-file')
 // Set up the express app
 const app = express();
 // Log requests to the console.
@@ -17,6 +17,7 @@ app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true
 }))
+app.use(upload.array())
 
 // Models 
 var models = require('./models');
